@@ -1,4 +1,4 @@
-### Simple React TODO list
+### Simple React TODO list (in memory)
 
 * ```npm init -y```
 * ```npm i -S react react-dom```
