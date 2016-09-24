@@ -1,23 +1,46 @@
-import _ from 'lodash';
 import React from 'react';
-import TodosListHeader from './todos-list-header'
 
 export default class TodosListItem extends React.Component {
-    renderItems() {
-        return _.map(this.props.todos, (todo, index) => <TodosListItem key={index} {...todo} />);
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isEditing: false
+        };
+    }
+
+    renderActionSection() {
+        if (this.state.isEditing) {
+            return (
+                <td>
+                    <button>save</button>
+                    <button onClick={this.onCancelClick.bind(this)}>cancel</button>
+                </td>
+            );
+        }
+
+        return (
+            <td>
+                <button onClick={this.onEditClick.bind(this)}>edit</button>
+                <button>delete</button>
+            </td>
+        );
     }
 
     render() {
-        console.log(this.props);
         return (
             <tr>
                 <td>{this.props.task}</td>
-                <td>
-                    <button>edit</button>
-                    <button>delete</button>
-                </td>
+                {this.renderActionSection()}
             </tr>
-        )
-    };
+        );
+    }
 
+    onEditClick() {
+        this.setState({isEditing: true})
+    }
+
+    onCancelClick() {
+        this.setState({isEditing: false})
+    }
 }
