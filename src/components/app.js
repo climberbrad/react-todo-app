@@ -26,9 +26,18 @@ export default class App extends React.Component {
             <div>
                 <h1>React ToDos App</h1>
                 <CreateTodo todos={this.state.todos} createTask={this.createTask.bind(this)} />
-                <TodosList todos={this.state.todos} />
+                <TodosList
+                    todos={this.state.todos}
+                    toggleTask={this.toggleTask.bind(this)}
+                />
             </div>
         );
+    }
+
+    toggleTask(task) {
+        const foundTodo = _.find(this.state.todos, todo => todo.task == task);
+        foundTodo.isComplete = !foundTodo.isComplete;
+        this.setState({todos : this.state.todos});
     }
 
     createTask(task) {
