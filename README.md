@@ -6,4 +6,4 @@
 * ```npm i -g webpack webpack-dev-server```
 * ```npm i -S lodash```
 * ```webpack-dev-server```
-* ```localhost:8080```
+* [http://localhost:8080](http://localhost:8080)
